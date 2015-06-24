@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html ng-app="egghead">
+<html ng-app="bcpApp">
 <head>
-    <title>Egghead.io - AngularJS and Firebase</title>
+    <title>BoulderCODE+ test app</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link rel="stylesheet" href="css/egghead.css"/>
+    <link rel="stylesheet" href="css/bcp.css"/>
 </head>
 <body ng-controller="MainCtrl">
     <table class="table edit">
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Description</th>
+            <th>Activity</th>
+            <th>Meeting time/place</th>
             <th>Count</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="(id, item) in items">
-            <td><input type="text" ng-model="item.name" ng-blur="updateItem(id)"/></td>
-            <td><input type="text" ng-model="item.description" ng-blur="updateItem(id)"/></td>
+            <td><input type="text" ng-model="item.activity" ng-blur="updateItem(id)"/></td>
+            <td><input type="text" ng-model="item.meeting_time_place" ng-blur="updateItem(id)"/></td>
             <td><input type="text" ng-model="item.count" ng-blur="updateItem(id)"/></td>
             <td>
                 <a href="#" ng-click="removeItem(id)" class="navbar-link">Remove</a>
@@ -33,10 +33,10 @@
 
         <form class="form-inline" role="form" novalidate ng-submit="addItem()">
             <div class="form-group">
-                <input type="text" class="form-control" ng-model="newItem.name" placeholder="Name">
+                <input type="text" class="form-control" ng-model="newItem.activity" placeholder="Proposed Activity">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" ng-model="newItem.description" placeholder="Description">
+                <input type="text" class="form-control" ng-model="newItem.meeting_time_place" placeholder="Meeting time and place">
             </div>
             <div class="form-group">
                 <input type="text" class="form-control" ng-model="newItem.count" placeholder="Count">
@@ -53,6 +53,6 @@
     <script src="https://cdn.firebase.com/libs/angularfire/0.6.0/angularfire.js"></script>
 
 
-    <script src="js/egghead.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

@@ -1,16 +1,16 @@
-var app = angular.module('egghead', ['firebase']);
+var app = angular.module('bcpApp', ['firebase']);
 
 app.constant('FIREBASE_URI', 'https://brilliant-fire-2881.firebaseio.com/');
 
 app.controller('MainCtrl', ['$scope', 'ItemsService', function ($scope, ItemsService) {
-    $scope.newItem = { name: '', description: '', count: 0 };
+    $scope.newItem = { activity: '', meeting_time_place: '', count: 0 };
     $scope.currentItem = null;
 
     $scope.items = ItemsService.getItems();
 
     $scope.addItem = function () {
         ItemsService.addItem(angular.copy($scope.newItem));
-        $scope.newItem = { name: '', description: '', count: 0 };
+        $scope.newItem = { activity: '', meeting_time_place: '', count: 0 };
     };
 
     $scope.updateItem = function (id) {
