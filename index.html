@@ -10,36 +10,46 @@
     <table class="table edit">
         <thead>
         <tr>
-            <th>Activity</th>
-            <th>Meeting time/place</th>
+            <th>Title</th>
+            <th>Details</th>
             <th>Count</th>
+            <th>Meeting time</th>
+            <th>Meeting place</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="(id, item) in items">
-            <td><input type="text" ng-model="item.activity" ng-blur="updateItem(id)"/></td>
-            <td><input type="text" ng-model="item.meeting_time_place" ng-blur="updateItem(id)"/></td>
-            <td><input type="text" ng-model="item.count" ng-blur="updateItem(id)"/></td>
+        <tr ng-repeat="(id, activity) in activities">
+            <td><input type="text" ng-model="activity.title" ng-blur="updateActivity(id)"/></td>
+            <td><input type="text" ng-model="activity.details" ng-blur="updateActivity(id)"/></td>
+            <td><input type="text" ng-model="activity.meet_time" ng-blur="updateActivity(id)"/></td>
+            <td><input type="text" ng-model="activity.meet_place" ng-blur="updateActivity(id)"/></td>
+            <td><input type="text" ng-model="activity.count" ng-blur="updateActivity(id)"/></td>
             <td>
-                <a href="#" ng-click="removeItem(id)" class="navbar-link">Remove</a>
+                <a href="#" ng-click="removeActivity(id)" class="navbar-link">Remove</a>
             </td>
         </tr>
         </tbody>
     </table>
 
     <div class="well">
-        <h4>Add Item</h4>
+        <h4>Add Activity</h4>
 
-        <form class="form-inline" role="form" novalidate ng-submit="addItem()">
+        <form class="form-inline" role="form" novalidate ng-submit="addActivity()">
             <div class="form-group">
-                <input type="text" class="form-control" ng-model="newItem.activity" placeholder="Proposed Activity">
+                <input type="text" class="form-control" ng-model="newActivity.title" placeholder="Title">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" ng-model="newItem.meeting_time_place" placeholder="Meeting time and place">
+                <input type="text" class="form-control" ng-model="newActivity.details" placeholder="Details">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" ng-model="newItem.count" placeholder="Count">
+                <input type="text" class="form-control" ng-model="newActivity.meet_time" placeholder="When to meet">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="newActivity.meet_place" placeholder="Where to meet">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" ng-model="newActivity.count" placeholder="Count">
             </div>
             <button type="submit" class="btn btn-default">Add</button>
         </form>

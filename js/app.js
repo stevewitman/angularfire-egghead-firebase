@@ -2,51 +2,51 @@ var app = angular.module('bcpApp', ['firebase']);
 
 app.constant('FIREBASE_URI', 'https://brilliant-fire-2881.firebaseio.com/');
 
-app.controller('MainCtrl', ['$scope', 'ItemsService', function ($scope, ItemsService) {
-    $scope.newItem = { activity: '', meeting_time_place: '', count: 0 };
-    $scope.currentItem = null;
+app.controller('MainCtrl', ['$scope', 'ActivitysService', function ($scope, ActivitysService) {
+    $scope.newActivity = { title: '', details: '', meet_time: '', meet_place: '', count: 0 };
+    $scope.currentActivity = null;
 
-    $scope.items = ItemsService.getItems();
+    $scope.activities = ActivitysService.getActivitys();
 
-    $scope.addItem = function () {
-        ItemsService.addItem(angular.copy($scope.newItem));
-        $scope.newItem = { activity: '', meeting_time_place: '', count: 0 };
+    $scope.addActivity = function () {
+        ActivitysService.addActivity(angular.copy($scope.newActivity));
+        $scope.newActivity = { title: '', details: '', meet_time: '', meet_place: '', count: 0 };
     };
 
-    $scope.updateItem = function (id) {
-        ItemsService.updateItem(id);
+    $scope.updateActivity = function (id) {
+        ActivitysService.updateActivity(id);
     };
 
-    $scope.removeItem = function (id) {
-        ItemsService.removeItem(id);
+    $scope.removeActivity = function (id) {
+        ActivitysService.removeActivity(id);
     };
 }]);
 
-app.factory('ItemsService', ['$firebase', 'FIREBASE_URI', function ($firebase, FIREBASE_URI) {
+app.factory('ActivitysService', ['$firebase', 'FIREBASE_URI', function ($firebase, FIREBASE_URI) {
     var ref = new Firebase(FIREBASE_URI);
-    var items = $firebase(ref);
+    var activities = $firebase(ref);
 
 
-    var getItems = function () {
-        return items;
+    var getActivitys = function () {
+        return activities;
     };
 
-    var addItem = function (item) {
-        items.$add(item);
+    var addActivity = function (activity) {
+        activities.$add(activity);
     };
 
-    var updateItem = function (id) {
-        items.$save(id);
+    var updateActivity = function (id) {
+        activities.$save(id);
     };
 
-    var removeItem = function (id) {
-        items.$remove(id);
+    var removeActivity = function (id) {
+        activities.$remove(id);
     };
 
     return {
-        getItems: getItems,
-        addItem: addItem,
-        updateItem: updateItem,
-        removeItem: removeItem
+        getActivitys: getActivitys,
+        addActivity: addActivity,
+        updateActivity: updateActivity,
+        removeActivity: removeActivity
     }
 }]);
