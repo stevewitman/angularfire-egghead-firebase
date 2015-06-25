@@ -7,31 +7,9 @@
     <link rel="stylesheet" href="css/bcp.css"/>
 </head>
 <body ng-controller="MainCtrl">
-    <table class="table edit">
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th>Details</th>
-            <th>Count</th>
-            <th>Meeting time</th>
-            <th>Meeting place</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="(id, activity) in activities">
-            <td><input type="text" ng-model="activity.title" ng-blur="updateActivity(id)"/></td>
-            <td><input type="text" ng-model="activity.details" ng-blur="updateActivity(id)"/></td>
-            <td><input type="text" ng-model="activity.meet_time" ng-blur="updateActivity(id)"/></td>
-            <td><input type="text" ng-model="activity.meet_place" ng-blur="updateActivity(id)"/></td>
-            <td><input type="text" ng-model="activity.count" ng-blur="updateActivity(id)"/></td>
-            <td>
-                <a href="#" ng-click="removeActivity(id)" class="navbar-link">Remove</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
+    <div ng-repeat="activity in activities">
+      <bcp-plus activity="activity"></bcp-plus>
+    </div>
     <div class="well">
         <h4>Add Activity</h4>
 
@@ -48,9 +26,7 @@
             <div class="form-group">
                 <input type="text" class="form-control" ng-model="newActivity.meet_place" placeholder="Where to meet">
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control" ng-model="newActivity.count" placeholder="Count">
-            </div>
+
             <button type="submit" class="btn btn-default">Add</button>
         </form>
     </div>
@@ -64,5 +40,7 @@
 
 
     <script src="js/app.js"></script>
+    <!-- directives -->
+
 </body>
 </html>

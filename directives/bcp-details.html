@@ -1,0 +1,9 @@
+<div ng-show='!!activity.details && !collapsed' ng-click="collapseDetails()">
+  <h4>Details:</h4>
+  <p>{{activity.details}}</p><br>
+  Meeting Time: {{activity.meet_time}}<br>
+  Meeting Place: {{activity.meet_place}}
+</div>
+<div ng-show='!!activity.details && collapsed' ng-click="expandDetails()">
+  <h4>Details:</h4>
+</div>
